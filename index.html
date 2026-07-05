@@ -75,7 +75,19 @@
     color:white;
     box-shadow:0 8px 20px rgba(37,99,235,.25);
 }
+/* 📌 [수정] 일반 배관(mTabNormal)이 활성화되었을 때 (기존 파란색 그라데이션) */
+#mTabNormal.active {
+    background: linear-gradient(135deg, #0F172A, #2563EB);
+    color: white;
+    box-shadow: 0 8px 20px rgba(37, 99, 235, .25);
+}
 
+/* 📌 [추가] 플라스틱 배관(mTabPlastic)이 활성화되었을 때 (오렌지색 그라데이션) */
+#mTabPlastic.active {
+    background: linear-gradient(135deg, #E65C00, #F9D423); /* 어두운 주황 -> 밝은 주황 */
+    color: white;
+    box-shadow: 0 8px 20px rgba(230, 92, 0, .3); /* 주황색 그림자 효과 */
+}
         .main-panel {
             display: flex;
             flex-direction: column;
@@ -83,22 +95,23 @@
         }
 
         .main-header{
-
     background:
         linear-gradient(135deg,#0F172A,#1E3A8A,#0891B2);
-
     color:white;
-
     border-radius:16px;
-
     padding:20px;
-
     box-shadow:
         0 15px 35px rgba(30,41,59,.25);
-
     position:relative;
-
     overflow:hidden;
+    /* 자연스러운 색상 전환 효과 추가 */
+    transition: background 0.3s ease, box-shadow 0.3s ease; 
+}
+
+/* 📌 [추가] 플라스틱 배관 선택 시 상단 바를 오렌지색으로 바꾸는 스타일 */
+.main-header.orange-theme {
+    background: linear-gradient(135deg, #E65C00, #F97316, #FBBF24);
+    box-shadow: 0 15px 35px rgba(230, 92, 0, .3);
 }
 
 .main-header::before{
@@ -312,7 +325,36 @@
             margin-bottom: 12px;
         }
         .diagram-svg { width: 100%; height: auto; display: block; }
-
+.btn-sub-tile {
+            background: linear-gradient(180deg, #ffffff, #fef8e7);
+            border: 1px solid #FDE68A;
+            padding: 10px 2px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #92400E;
+            cursor: pointer;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(217, 119, 6, 0.05);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-sub-tile:hover {
+            background: #FFFDF5;
+            border-color: #D97706;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(217, 119, 6, 0.12);
+        }
+        .btn-sub-tile:active {
+            transform: scale(0.95);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
+        }
+        .btn-sub-tile.active {
+            background: linear-gradient(135deg, #F97316, #EA580C) !important;
+            color: #ffffff !important;
+            border-color: #EA580C !important;
+            box-shadow: 0 4px 12px rgba(234, 88, 12, 0.35) !important;
+            font-weight: 800;
+        }
         .result-panel { padding: 16px; border-radius: 8px; text-align: center; font-weight: 700; }
         .result-panel.ready { background: #F1F5F9; border: 1px dashed #94A3B8; color: #64748B; }
         .result-panel.pass { background: var(--success-bg); border: 1px solid var(--success-border); color: var(--success-text); }
@@ -409,11 +451,11 @@
     
     <div class="main-panel">
         <div class="main-header">
-            <h1 id="mainTitleHeader">배관 수평/수직 굴절부 지지간격 기술검토</h1>
+            <h1 id="mainTitleHeader">일반배관 수평/수직 굴절부 지지간격 기술검토</h1>
         </div>
 
         <div class="card">
-            <div class="card-heading" id="envSettingHeading">검토 환경 및 형상 원터치 설정</div>
+            <div class="card-heading" id="envSettingHeading">검토 환경 및 형상 설정</div>
             
             <div id="normalBendingWrapper">
                 <div class="dir-tab-container">
@@ -435,9 +477,9 @@
 
                 <div class="input-label">배관 형상 형태</div>
                 <div class="tile-group grid-3">
-                    <button class="btn-tile" id="btnTypeL" onclick="setPipeType('L')">L자형 (Elbow)</button>
-                    <button class="btn-tile active" id="btnTypeU" onclick="setPipeType('U')">ㄷ자형 (U-Bend)</button>
-                    <button class="btn-tile" id="btnTypeZ" onclick="setPipeType('Z')">Z자형 (Offset)</button>
+                    <button class="btn-tile" id="btnTypeL" onclick="setPipeType('L')">L자형</button>
+                    <button class="btn-tile active" id="btnTypeU" onclick="setPipeType('U')">ㄷ자형</button>
+                    <button class="btn-tile" id="btnTypeZ" onclick="setPipeType('Z')">Z자형</button>
                 </div>
             </div>
 
@@ -776,7 +818,8 @@
             guidelineCard.style.display = "none";
             envHeading.textContent = "플라스틱 재질 및 규격 설정";
             document.getElementById("mainTitleHeader").textContent = "플라스틱 배관 기준 지지간격 기술검토";
-            
+            // 📌 [추가] 상단 파란색 바(.main-header)를 찾아서 오렌지색 클래스를 넣습니다.
+    document.querySelector(".main-header").classList.add("orange-theme");
             const validSizes = Object.keys(plasticPipeMaster[configState.plasticMat]);
             if (!validSizes.includes(configState.size)) {
                 configState.size = validSizes[0] || "40A";
@@ -787,6 +830,8 @@
             guidelineCard.style.display = "block";
             envHeading.textContent = "검토 환경 및 형상 원터치 설정";
             document.getElementById("mainTitleHeader").textContent = "배관 수평/수직 굴절부 지지간격 기술검토";
+// 📌 [추가] 일반 배관으로 돌아오면 오렌지색 클래스를 제거(원상복구)합니다.
+    document.querySelector(".main-header").classList.remove("orange-theme");
             configState.size = "50A";
         }
 
