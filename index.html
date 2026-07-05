@@ -53,23 +53,28 @@
             border-radius: 10px;
         }
 
-        .master-tab {
-            flex: 1;
-            text-align: center;
-            padding: 12px 6px;
-            font-size: 14px;
-            font-weight: 700;
-            color: #475569;
-            cursor: pointer;
-            border-radius: 8px;
-            transition: all 0.2s ease;
-        }
+        .master-tab{
+    flex:1;
+    text-align:center;
+    padding:12px 6px;
+    font-size:14px;
+    font-weight:700;
+    color:#475569;
+    cursor:pointer;
+    border-radius:10px;
 
-        .master-tab.active {
-            background: var(--primary-color);
-            color: #ffffff;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-        }
+    transition:all .25s cubic-bezier(.2,.8,.2,1);
+}
+
+.master-tab:hover{
+    transform:translateY(-2px);
+}
+
+.master-tab.active{
+    background:linear-gradient(135deg,#0F172A,#2563EB);
+    color:white;
+    box-shadow:0 8px 20px rgba(37,99,235,.25);
+}
 
         .main-panel {
             display: flex;
@@ -77,33 +82,70 @@
             gap: 12px;
         }
 
-        .main-header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, #334155 100%);
-            color: #ffffff;
-            padding: 14px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-        }
+        .main-header{
+
+    background:
+        linear-gradient(135deg,#0F172A,#1E3A8A,#0891B2);
+
+    color:white;
+
+    border-radius:16px;
+
+    padding:20px;
+
+    box-shadow:
+        0 15px 35px rgba(30,41,59,.25);
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.main-header::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    background:rgba(255,255,255,.08);
+
+    border-radius:50%;
+
+    top:-80px;
+    right:-50px;
+}
+
+.main-header h1{
+
+    font-size:18px;
+
+    letter-spacing:-0.3px;
+}
 
         .main-header h1 { font-size: 16px; font-weight: 700; letter-spacing: -0.5px; }
 
         .card {
-            background: #ffffff;
-            border-radius: 10px;
-            padding: 14px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-            border: 1px solid var(--border-color);
-        }
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    border: 1px solid #e2e8f0;
+    margin-bottom: 16px;
+}
 
-        .card-heading {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-            padding-left: 6px;
-            border-left: 4px solid var(--accent-blue);
-        }
+.card-heading {
+    font-size: 14px;
+    font-weight: 800;
+    color: #1e293b;
+    margin-bottom: 16px;
+    padding-left: 10px;
+    border-left: 4px solid #06b6d4;
+    display: flex;
+    align-items: center;
+}
 
         .dir-tab-container {
             display: flex;
@@ -113,22 +155,27 @@
             margin-bottom: 12px;
         }
 
-        .dir-tab {
-            flex: 1;
-            text-align: center;
-            padding: 10px 0;
-            font-size: 12px;
-            font-weight: 600;
-            color: #64748B;
-            cursor: pointer;
-            border-radius: 6px;
-        }
+        .dir-tab{
+    flex:1;
+    text-align:center;
+    padding:10px 0;
+    font-size:12px;
+    font-weight:600;
+    color:#64748B;
+    cursor:pointer;
+    border-radius:8px;
+    transition:all .25s;
+}
 
-        .dir-tab.active {
-            background: #ffffff;
-            color: var(--primary-color);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
-        }
+.dir-tab:hover{
+    transform:translateY(-2px);
+}
+
+.dir-tab.active{
+    background:linear-gradient(135deg,#0F766E,#14B8A6);
+    color:#fff;
+    box-shadow:0 5px 15px rgba(20,184,166,.25);
+}
 
         .input-label {
             font-size: 12px;
@@ -150,22 +197,52 @@
         .grid-capsule { grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)); }
 
         .btn-tile {
-            background: #F1F5F9;
-            border: 1px solid #CBD5E1;
-            padding: 10px 4px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 600;
-            color: #334155;
-            cursor: pointer;
-            text-align: center;
-        }
-        .btn-tile:active { transform: scale(0.97); }
-        .btn-tile.active {
-            background: var(--secondary-color);
-            color: #fff;
-            border-color: var(--secondary-color);
-        }
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(180deg, #ffffff, #f1f5f9);
+    border: 1px solid #cbd5e1;
+    color: #334155;
+    border-radius: 12px;
+    padding: 12px 6px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.btn-tile:hover {
+    background: #f8fafc;
+    border-color: #94a3b8;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(15, 118, 110, 0.15);
+}
+
+.btn-tile:active {
+    transform: scale(0.92);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.btn-tile.active {
+    background: linear-gradient(135deg, #0f766e, #06b6d4);
+    color: white;
+    border-color: #0f766e;
+    box-shadow: 0 4px 15px rgba(15, 118, 110, 0.4);
+    animation: pulse-glow 2s infinite;
+}
+
+@keyframes pulse-glow {
+    0% { box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.4); }
+    70% { box-shadow: 0 0 0 6px rgba(6, 182, 212, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(6, 182, 212, 0); }
+}
+
+.btn-tile.active::after {
+    content: "✓";
+    margin-left: 4px;
+    font-size: 10px;
+    opacity: 0.9;
+}
 
         .sub-type-container {
             background: #FEF3C7;
@@ -298,6 +375,28 @@
             margin-top: 8px;
             margin-bottom: 16px;
         }
+.btn-tile{
+    position:relative;
+    overflow:hidden;
+}
+
+.btn-tile::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:50%;
+    width:0;
+    height:0;
+    border-radius:50%;
+    background:rgba(255,255,255,.35);
+    transform:translate(-50%,-50%);
+    transition:.45s;
+}
+
+.btn-tile:active::before{
+    width:220px;
+    height:220px;
+}
     </style>
 </head>
 <body>
@@ -371,9 +470,24 @@
         <div class="sidebar-panel" id="sidebarContent"></div>
 
         <div class="creator-credits">
-            제작자 : 황정훈 (jh12.hwang@samsung.com)
-        </div>
+    <div style="
+        display:inline-block;
+        padding:6px 14px;
+        margin-bottom:8px;
+        background:#0F766E;
+        color:#fff;
+        border-radius:20px;
+        font-size:12px;
+        font-weight:700;
+        box-shadow:0 4px 12px rgba(15,118,110,.25);
+    ">
+        평택 P5 그린동 품질팀
     </div>
+
+    <div>
+        제작자 : 황정훈 (jh12.hwang@samsung.com)
+    </div>
+</div>
 </div>
 
 <script>
