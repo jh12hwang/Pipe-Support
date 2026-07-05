@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>배관 굴절부 지지간격 통합 기술검토 시스템</title>
+    <title>배관 지지간격 통합 기술검토 시스템</title>
     <style>
         :root {
-            --primary-color: #1E293B; /* 딥 슬레이트 그레이 */
-            --secondary-color: #0F766E; /* 딥 에메랄드 테일 */
-            --accent-blue: #06B6D4; /* 하이라이트 시안 */
-            --accent-orange: #F97316; /* 경고/알림 오렌지 */
+            --primary-color: #1E293B; 
+            --secondary-color: #0F766E; 
+            --accent-blue: #06B6D4; 
+            --accent-orange: #F97316; 
             --neutral-dark: #0F172A;
             --neutral-light: #F8FAFC;
             --border-color: #CBD5E1;
@@ -32,131 +32,76 @@
         body {
             background-color: #E2E8F0;
             color: var(--neutral-dark);
-            padding: 12px;
+            padding: 8px;
             display: flex;
             justify-content: center;
         }
 
         .dashboard-container {
-            display: grid;
-            grid-template-columns: 320px 1fr;
-            gap: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
             width: 100%;
-            max-width: 1400px;
+            max-width: 600px;
         }
 
-        /* 마스터 탭 */
         .master-tab-container {
-            grid-column: 1 / -1;
             display: flex;
-            gap: 8px;
+            gap: 6px;
             background: #CBD5E1;
             padding: 4px;
-            border-radius: 12px;
+            border-radius: 10px;
         }
 
         .master-tab {
             flex: 1;
             text-align: center;
-            padding: 14px;
-            font-size: 15px;
+            padding: 12px 6px;
+            font-size: 14px;
             font-weight: 700;
             color: #475569;
             cursor: pointer;
-            border-radius: 10px;
+            border-radius: 8px;
             transition: all 0.2s ease;
         }
 
         .master-tab.active {
             background: var(--primary-color);
             color: #ffffff;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
         }
 
-        /* 왼쪽 사이드바 기준표 */
-        .sidebar-panel {
-            background: #ffffff;
-            border-radius: 14px;
-            padding: 16px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            height: calc(100vh - 100px);
-            position: sticky;
-            top: 85px;
-            overflow-y: auto;
-            border: 1px solid var(--border-color);
-        }
-
-        .table-title {
-            font-size: 12px;
-            font-weight: 700;
-            color: #1E293B;
-            margin-bottom: 8px;
-            background: #F1F5F9;
-            padding: 6px 10px;
-            border-left: 4px solid var(--secondary-color);
-            border-radius: 4px;
-        }
-
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 12px;
-            text-align: center;
-        }
-
-        .data-table th {
-            background: #E2E8F0;
-            color: #334155;
-            font-weight: 700;
-            padding: 8px 4px;
-            border: 1px solid var(--border-color);
-        }
-
-        .data-table td {
-            padding: 8px 4px;
-            border: 1px solid var(--border-color);
-            color: #475569;
-            transition: all 0.15s ease;
-        }
-
-        .data-table td.highlight-cell {
-            background-color: #CCFBF1 !important;
-            color: var(--secondary-color) !important;
-            font-weight: 800;
-            border: 2px solid var(--secondary-color) !important;
-        }
-
-        /* 오른쪽 메인 패널 */
         .main-panel {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 12px;
         }
 
         .main-header {
             background: linear-gradient(135deg, var(--primary-color) 0%, #334155 100%);
             color: #ffffff;
-            padding: 18px;
-            border-radius: 14px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            padding: 14px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
         }
 
-        .main-header h1 { font-size: 18px; font-weight: 700; letter-spacing: -0.5px; }
+        .main-header h1 { font-size: 16px; font-weight: 700; letter-spacing: -0.5px; }
 
         .card {
             background: #ffffff;
-            border-radius: 14px;
-            padding: 18px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            border-radius: 10px;
+            padding: 14px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
             border: 1px solid var(--border-color);
         }
 
         .card-heading {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 700;
             color: var(--primary-color);
-            margin-bottom: 12px;
-            padding-left: 8px;
+            margin-bottom: 10px;
+            padding-left: 6px;
             border-left: 4px solid var(--accent-blue);
         }
 
@@ -164,86 +109,83 @@
             display: flex;
             background: #E2E8F0;
             padding: 2px;
-            border-radius: 10px;
-            margin-bottom: 16px;
+            border-radius: 8px;
+            margin-bottom: 12px;
         }
 
         .dir-tab {
             flex: 1;
             text-align: center;
-            padding: 12px 0;
-            font-size: 13px;
+            padding: 10px 0;
+            font-size: 12px;
             font-weight: 600;
             color: #64748B;
             cursor: pointer;
-            border-radius: 8px;
+            border-radius: 6px;
         }
 
         .dir-tab.active {
             background: #ffffff;
             color: var(--primary-color);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
         }
 
         .input-label {
             font-size: 12px;
             font-weight: 700;
             color: #475569;
-            margin-bottom: 8px;
-            margin-top: 14px;
+            margin-bottom: 6px;
+            margin-top: 12px;
         }
         .input-label:first-child { margin-top: 0; }
 
         .tile-group {
             display: grid;
             gap: 6px;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
         
         .grid-3 { grid-template-columns: repeat(3, 1fr); }
         .grid-2 { grid-template-columns: repeat(2, 1fr); }
-        .grid-capsule { grid-template-columns: repeat(auto-fill, minmax(65px, 1fr)); }
+        .grid-capsule { grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)); }
 
         .btn-tile {
             background: #F1F5F9;
             border: 1px solid #CBD5E1;
-            padding: 12px 8px;
-            border-radius: 8px;
+            padding: 10px 4px;
+            border-radius: 6px;
             font-size: 12px;
             font-weight: 600;
             color: #334155;
             cursor: pointer;
             text-align: center;
-            transition: all 0.15s ease;
         }
-        .btn-tile:active { transform: scale(0.98); }
+        .btn-tile:active { transform: scale(0.97); }
         .btn-tile.active {
             background: var(--secondary-color);
             color: #fff;
             border-color: var(--secondary-color);
-            box-shadow: 0 2px 6px rgba(15, 118, 110, 0.2);
         }
 
-        /* 수직 ㄷ자형 응용선택기 */
         .sub-type-container {
             background: #FEF3C7;
-            padding: 12px;
-            border-radius: 10px;
-            margin-bottom: 16px;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 12px;
             border: 1px solid #FDE68A;
             display: none;
         }
         .sub-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 6px;
+            gap: 4px;
             margin-top: 6px;
         }
         .btn-sub-tile {
             background: #fff;
             border: 1px solid #D97706;
-            padding: 10px 4px;
-            border-radius: 6px;
+            padding: 8px 2px;
+            border-radius: 4px;
             font-size: 11px;
             font-weight: 600;
             color: #92400E;
@@ -256,115 +198,157 @@
             border-color: var(--accent-orange);
         }
 
-        /* 수치 직접 입력 창 */
         .value-input-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 12px;
+            grid-template-columns: 1fr;
+            gap: 10px;
         }
         .value-input-grid label { font-size: 11px; font-weight: 700; color: #475569; margin-bottom: 4px; display: block; }
         .value-input-grid input {
-            width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #CBD5E1;
-            font-size: 14px; font-weight: 600; background-color: #F8FAFC; outline: none;
+            width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #CBD5E1;
+            font-size: 16px; font-weight: 600; background-color: #F8FAFC; outline: none;
+            -webkit-appearance: none;
         }
         .value-input-grid input:focus { border-color: var(--accent-blue); background-color: #fff; }
 
         .formula-banner {
             background-color: #F0FDF4;
             border-left: 4px solid var(--secondary-color);
-            padding: 12px;
+            padding: 10px;
             border-radius: 6px;
-            margin-bottom: 14px;
-            font-size: 13px;
+            margin-bottom: 10px;
+            font-size: 12px;
             font-weight: 700;
             color: #115E59;
+            line-height: 1.4;
         }
 
         .diagram-box {
-            background: #F8FAFC;
+            background: #ffffff;
             border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 12px;
+            border-radius: 8px;
+            padding: 6px;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 250px;
-            margin-bottom: 14px;
+            min-height: 240px;
+            margin-bottom: 12px;
         }
-        .diagram-svg { width: 100%; max-width: 440px; height: auto; }
+        .diagram-svg { width: 100%; height: auto; display: block; }
 
-        .result-panel { padding: 18px; border-radius: 10px; text-align: center; font-weight: 700; }
+        .result-panel { padding: 16px; border-radius: 8px; text-align: center; font-weight: 700; }
         .result-panel.ready { background: #F1F5F9; border: 1px dashed #94A3B8; color: #64748B; }
         .result-panel.pass { background: var(--success-bg); border: 1px solid var(--success-border); color: var(--success-text); }
         .result-panel.fail { background: var(--fail-bg); border: 1px solid var(--fail-border); color: var(--fail-text); }
-        .result-title { font-size: 20px; font-weight: 800; margin-bottom: 4px; }
-        .result-desc { font-size: 13px; font-weight: 500; text-align: left; display: inline-block; line-height: 1.4; }
+        .result-title { font-size: 18px; font-weight: 800; margin-bottom: 6px; }
+        .result-desc { font-size: 12px; font-weight: 500; text-align: left; display: inline-block; line-height: 1.5; width: 100%; }
 
-        .creator-credits {
-            text-align: right;
-            font-size: 11px;
-            color: #64748B;
-            line-height: 1.5;
-            margin-top: 8px;
-            padding-right: 6px;
+        .sidebar-panel {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            margin-top: 4px;
         }
 
-        @media (max-width: 850px) {
-            .dashboard-container { grid-template-columns: 1fr; }
-            .sidebar-panel { height: auto; position: relative; top: 0; order: 2; }
-            .main-panel { order: 1; }
+        .table-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: #1E293B;
+            margin-bottom: 6px;
+            background: #F1F5F9;
+            padding: 6px 10px;
+            border-left: 4px solid var(--secondary-color);
+            border-radius: 4px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+            text-align: center;
+        }
+
+        .data-table th {
+            background: #E2E8F0;
+            color: #334155;
+            font-weight: 700;
+            padding: 6px 2px;
+            border: 1px solid var(--border-color);
+        }
+
+        .data-table td {
+            padding: 6px 2px;
+            border: 1px solid var(--border-color);
+            color: #475569;
+        }
+
+        .data-table td.highlight-cell {
+            background-color: #CCFBF1 !important;
+            color: var(--secondary-color) !important;
+            font-weight: 800;
+            border: 2px solid var(--secondary-color) !important;
+        }
+
+        .creator-credits {
+            text-align: center;
+            font-size: 11px;
+            color: #64748B;
+            line-height: 1.4;
+            margin-top: 8px;
+            margin-bottom: 16px;
         }
     </style>
 </head>
 <body>
 
 <div class="dashboard-container">
-    
     <div class="master-tab-container">
         <div class="master-tab active" id="mTabNormal" onclick="setMasterMaterial('Normal')">일반배관</div>
         <div class="master-tab" id="mTabPlastic" onclick="setMasterMaterial('Plastic')">플라스틱배관</div>
     </div>
     
-    <div class="sidebar-panel" id="sidebarContent"></div>
-
     <div class="main-panel">
         <div class="main-header">
             <h1 id="mainTitleHeader">배관 수평/수직 굴절부 지지간격 기술검토</h1>
         </div>
 
         <div class="card">
-            <div class="card-heading">검토 환경 및 형상 원터치 설정</div>
-            <div class="dir-tab-container">
-                <div class="dir-tab active" id="tabH" onclick="setDirection('H')">수평관 굴절부 검토</div>
-                <div class="dir-tab" id="tabV" onclick="setDirection('V')">수직관 굴절부 검토</div>
-            </div>
-
-            <div class="sub-type-container" id="subTypeWrapper">
-                <label style="color:var(--accent-orange); font-size:11px; font-weight:700;">⚙️ 수직 ㄷ자형 시방서 매핑 상세 유형 (1형~6형 선택)</label>
-                <div class="sub-grid">
-                    <button class="btn-sub-tile active" id="btnSub1" onclick="setSubVariation(1)">1형 (2D상세)</button>
-                    <button class="btn-sub-tile" id="btnSub2" onclick="setSubVariation(2)">2형 (3D상향)</button>
-                    <button class="btn-sub-tile" id="btnSub3" onclick="setSubVariation(3)">3형 (3D전면)</button>
-                    <button class="btn-sub-tile" id="btnSub4" onclick="setSubVariation(4)">4형 (3D후면)</button>
-                    <button class="btn-sub-tile" id="btnSub5" onclick="setSubVariation(5)">5형 (3D하향)</button>
-                    <button class="btn-sub-tile" id="btnSub6" onclick="setSubVariation(6)">6형 (3D복합)</button>
+            <div class="card-heading" id="envSettingHeading">검토 환경 및 형상 원터치 설정</div>
+            
+            <div id="normalBendingWrapper">
+                <div class="dir-tab-container">
+                    <div class="dir-tab" id="tabH" onclick="setDirection('H')">수평관 굴절부 검토</div>
+                    <div class="dir-tab active" id="tabV" onclick="setDirection('V')">수직관 굴절부 검토</div>
                 </div>
-            </div>
 
-            <div class="input-label">배관 형상 형태</div>
-            <div class="tile-group grid-3">
-                <button class="btn-tile active" id="btnTypeL" onclick="setPipeType('L')">L자형 (Elbow)</button>
-                <button class="btn-tile" id="btnTypeU" onclick="setPipeType('U')">ㄷ자형 (U-Bend)</button>
-                <button class="btn-tile" id="btnTypeZ" onclick="setPipeType('Z')">Z자형 (Offset)</button>
+                <div class="sub-type-container" id="subTypeWrapper" style="display: block;">
+                    <label style="color:var(--accent-orange); font-size:11px; font-weight:700;">⚙️ 수직 ㄷ자형 시방서 매핑 상세 유형 (1형~6형 선택)</label>
+                    <div class="sub-grid">
+                        <button class="btn-sub-tile active" id="btnSub1" onclick="setSubVariation(1)">1형</button>
+                        <button class="btn-sub-tile" id="btnSub2" onclick="setSubVariation(2)">2형</button>
+                        <button class="btn-sub-tile" id="btnSub3" onclick="setSubVariation(3)">3형</button>
+                        <button class="btn-sub-tile" id="btnSub4" onclick="setSubVariation(4)">4형</button>
+                        <button class="btn-sub-tile" id="btnSub5" onclick="setSubVariation(5)">5형</button>
+                        <button class="btn-sub-tile" id="btnSub6" onclick="setSubVariation(6)">6형</button>
+                    </div>
+                </div>
+
+                <div class="input-label">배관 형상 형태</div>
+                <div class="tile-group grid-3">
+                    <button class="btn-tile" id="btnTypeL" onclick="setPipeType('L')">L자형 (Elbow)</button>
+                    <button class="btn-tile active" id="btnTypeU" onclick="setPipeType('U')">ㄷ자형 (U-Bend)</button>
+                    <button class="btn-tile" id="btnTypeZ" onclick="setPipeType('Z')">Z자형 (Offset)</button>
+                </div>
             </div>
 
             <div id="plasticMaterialContainer" style="display:none;">
                 <div class="input-label">플라스틱 상세 재질 세부 분류</div>
                 <div class="tile-group grid-2">
-                    <button class="btn-tile active" id="btnMat_PP_Liquid" onclick="setPlasticMaterial('PP_Liquid')">PP 배관 (상온액체)</button>
-                    <button class="btn-tile" id="btnMat_PP_Gas" onclick="setPlasticMaterial('PP_Gas')">PP 배관 (상온기체)</button>
+                    <button class="btn-tile active" id="btnMat_PP_Liquid" onclick="setPlasticMaterial('PP_Liquid')">PP (상온액체)</button>
+                    <button class="btn-tile" id="btnMat_PP_Gas" onclick="setPlasticMaterial('PP_Gas')">PP (상온기체)</button>
                     <button class="btn-tile" id="btnMat_PE_SDR13" onclick="setPlasticMaterial('PE_SDR13')">국산 PE (SDR13.5)</button>
-                    <button class="btn-tile" id="btnMat_PVC_PN16" onclick="setPlasticMaterial('PVC_PN16')">PVC 배관 (PN16)</button>
+                    <button class="btn-tile" id="btnMat_PVC_PN16" onclick="setPlasticMaterial('PVC_PN16')">PVC (PN16)</button>
                 </div>
             </div>
 
@@ -372,7 +356,7 @@
             <div class="tile-group grid-capsule" id="sizeButtonContainer"></div>
         </div>
 
-        <div class="card">
+        <div class="card" id="guidelineCard">
             <div class="card-heading">치수 가이드라인 도해 및 실측치 매칭</div>
             <div class="formula-banner" id="formulaBannerText">계산 공식을 로딩하고 있습니다...</div>
             <div class="diagram-box" id="diagramContainer"></div>
@@ -381,12 +365,13 @@
 
         <div class="result-panel ready" id="finalResultCard">
             <div class="result-title" id="finalStatusText">READY</div>
-            <div class="result-desc" id="finalDescText">각 포인트별 현장 측정 치수(mm)를 아래에 기입하면 정밀 판정이 연산됩니다.</div>
+            <div class="result-desc" id="finalDescText">각 포인트별 현장 측정 치수(mm)를 기입하면 모바일 자동 연산 판정이 시작됩니다.</div>
         </div>
 
+        <div class="sidebar-panel" id="sidebarContent"></div>
+
         <div class="creator-credits">
-            제작자 : 황정훈<br>
-            E-mail : jh12.hwang@samsung.com
+            제작자 : 황정훈 (jh12.hwang@samsung.com)
         </div>
     </div>
 </div>
@@ -406,119 +391,248 @@
 
     let configState = {
         materialMode: 'Normal', 
-        direction: 'H',        
-        type: 'L',            
+        direction: 'V',        
+        type: 'U',            
         size: '50A',          
         plasticMat: 'PP_Liquid',
         subVariation: 1
     };
 
-    // 시방서 기준 도면(2D 개요 1종 + 3D 입체 5종) 요소 및 색상을 100% 반영한 정밀 SVG 데이터
     const svgTemplates = {
-        'H_L': `<svg viewBox="0 0 400 240" class="diagram-svg">
-            <line x1="70" y1="160" x2="280" y2="160" stroke="#64748B" stroke-width="1.5" stroke-dasharray="4 4"/>
+        'H_L': `<svg viewBox="0 0 450 260" class="diagram-svg">
+            <defs>
+                <marker id="arrow-start" viewBox="0 0 10 10" refX="0" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 10 0 L 0 5 L 10 10 z" fill="#EF4444"/></marker>
+                <marker id="arrow-end" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#EF4444"/></marker>
+            </defs>
             <path d="M 70 50 L 70 160 L 280 160" fill="none" stroke="royalblue" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
             <rect x="58" y="67" width="24" height="6" fill="#0F766E" rx="1"/>
             <rect x="237" y="157" width="6" height="24" fill="#0F766E" rx="1"/>
-            <line x1="40" y1="160" x2="40" y2="70" stroke="#EF4444" stroke-width="1.2"/>
-            <text x="20" y="120" font-size="12" font-weight="bold" fill="#EF4444">L1</text>
-            <line x1="70" y1="195" x2="240" y2="195" stroke="#EF4444" stroke-width="1.2"/>
-            <text x="150" y="188" font-size="12" font-weight="bold" fill="#EF4444">L2</text>
+            <line x1="40" y1="160" x2="40" y2="70" stroke="#EF4444" stroke-width="1.2" marker-start="url(#arrow-start)" marker-end="url(#arrow-end)"/>
+            <text x="25" y="120" font-size="12" font-weight="bold" fill="#EF4444">L1</text>
+            <line x1="70" y1="195" x2="240" y2="195" stroke="#EF4444" stroke-width="1.2" marker-start="url(#arrow-start)" marker-end="url(#arrow-end)"/>
+            <text x="150" y="188" font-size="12" font-weight="bold" fill="#EF4444" text-anchor="middle">L2</text>
         </svg>`,
-        'H_U': `<svg viewBox="0 0 400 240" class="diagram-svg">
-            <line x1="60" y1="110" x2="240" y2="110" stroke="#64748B" stroke-width="1.5" stroke-dasharray="4 4"/>
+        'H_U': `<svg viewBox="0 0 450 260" class="diagram-svg">
+            <defs>
+                <marker id="arrow-start" viewBox="0 0 10 10" refX="0" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 10 0 L 0 5 L 10 10 z" fill="#EF4444"/></marker>
+                <marker id="arrow-end" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#EF4444"/></marker>
+            </defs>
             <path d="M 60 60 L 240 60 L 240 160 L 60 160" fill="none" stroke="royalblue" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
             <rect x="97" y="48" width="6" height="24" fill="#0F766E" rx="1"/>
             <rect x="97" y="148" width="6" height="24" fill="#0F766E" rx="1"/>
-            <line x1="100" y1="35" x2="240" y2="35" stroke="#EF4444" stroke-width="1.2"/>
-            <text x="165" y="25" font-size="12" font-weight="bold" fill="#EF4444">L3</text>
-            <line x1="265" y1="60" x2="265" y2="160" stroke="#EF4444" stroke-width="1.2"/>
-            <text x="275" y="115" font-size="12" font-weight="bold" fill="#EF4444">L4</text>
+            <line x1="100" y1="35" x2="240" y2="35" stroke="#EF4444" stroke-width="1.2" marker-start="url(#arrow-start)" marker-end="url(#arrow-end)"/>
+            <text x="170" y="25" font-size="12" font-weight="bold" fill="#EF4444" text-anchor="middle">L3</text>
+            <line x1="265" y1="60" x2="265" y2="160" stroke="#EF4444" stroke-width="1.2" marker-start="url(#arrow-start)" marker-end="url(#arrow-end)"/>
+            <text x="280" y="115" font-size="12" font-weight="bold" fill="#EF4444">L4</text>
         </svg>`,
-        'H_Z': `<svg viewBox="0 0 400 240" class="diagram-svg">
-            <line x1="60" y1="110" x2="280" y2="110" stroke="#64748B" stroke-width="1.5" stroke-dasharray="4 4"/>
+        'H_Z': `<svg viewBox="0 0 450 260" class="diagram-svg">
+            <defs>
+                <marker id="arrow-start" viewBox="0 0 10 10" refX="0" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 10 0 L 0 5 L 10 10 z" fill="#EF4444"/></marker>
+                <marker id="arrow-end" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#EF4444"/></marker>
+            </defs>
             <path d="M 60 60 L 160 60 L 160 160 L 280 160" fill="none" stroke="royalblue" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
             <rect x="87" y="48" width="6" height="24" fill="#0F766E" rx="1"/>
             <rect x="227" y="148" width="6" height="24" fill="#0F766E" rx="1"/>
-            <line x1="90" y1="35" x2="160" y2="35" stroke="#EF4444" stroke-width="1.2"/>
-            <text x="120" y="25" font-size="12" font-weight="bold" fill="#EF4444">L5</text>
-            <line x1="185" y1="60" x2="185" y2="160" stroke="#EF4444" stroke-width="1.2"/>
-            <text x="195" y="115" font-size="12" font-weight="bold" fill="#EF4444">L6</text>
-            <line x1="160" y1="195" x2="230" y2="195" stroke="#EF4444" stroke-width="1.2"/>
-            <text x="190" y="188" font-size="12" font-weight="bold" fill="#EF4444">L7</text>
+            <line x1="90" y1="35" x2="160" y2="35" stroke="#EF4444" stroke-width="1.2" marker-start="url(#arrow-start)" marker-end="url(#arrow-end)"/>
+            <text x="125" y="25" font-size="12" font-weight="bold" fill="#EF4444" text-anchor="middle">L5</text>
+            <line x1="185" y1="60" x2="185" y2="160" stroke="#EF4444" stroke-width="1.2" marker-start="url(#arrow-start)" marker-end="url(#arrow-end)"/>
+            <text x="200" y="115" font-size="12" font-weight="bold" fill="#EF4444">L6</text>
+            <line x1="160" y1="195" x2="230" y2="195" stroke="#EF4444" stroke-width="1.2" marker-start="url(#arrow-start)" marker-end="url(#arrow-end)"/>
+            <text x="195" y="188" font-size="12" font-weight="bold" fill="#EF4444" text-anchor="middle">L7</text>
         </svg>`,
-        'V_L': `<svg viewBox="0 0 400 240" class="diagram-svg">
-            <line x1="100" y1="160" x2="260" y2="160" stroke="#64748B" stroke-width="1.5" stroke-dasharray="4 4"/>
+        'V_L': `<svg viewBox="0 0 450 260" class="diagram-svg">
+            <defs>
+                <marker id="arrow-start" viewBox="0 0 10 10" refX="0" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 10 0 L 0 5 L 10 10 z" fill="#EF4444"/></marker>
+                <marker id="arrow-end" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#EF4444"/></marker>
+            </defs>
             <path d="M 100 40 L 100 160 L 260 160" fill="none" stroke="royalblue" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
             <rect x="88" y="67" width="24" height="6" fill="#0F766E" rx="1"/>
             <rect x="217" y="148" width="6" height="24" fill="#0F766E" rx="1"/>
-            <line x1="70" y1="160" x2="70" y2="70" stroke="#EF4444" stroke-width="1.2"/>
-            <text x="50" y="120" font-size="12" font-weight="bold" fill="#EF4444">L1</text>
-            <line x1="100" y1="195" x2="220" y2="195" stroke="#EF4444" stroke-width="1.2"/>
-            <text x="150" y="185" font-size="12" font-weight="bold" fill="#EF4444">L2</text>
+            <line x1="70" y1="160" x2="70" y2="70" stroke="#EF4444" stroke-width="1.2" marker-start="url(#arrow-start)" marker-end="url(#arrow-end)"/>
+            <text x="55" y="120" font-size="12" font-weight="bold" fill="#EF4444">L1</text>
+            <line x1="100" y1="195" x2="220" y2="195" stroke="#EF4444" stroke-width="1.2" marker-start="url(#arrow-start)" marker-end="url(#arrow-end)"/>
+            <text x="160" y="185" font-size="12" font-weight="bold" fill="#EF4444" text-anchor="middle">L2</text>
         </svg>`,
-        'V_Z': `<svg viewBox="0 0 400 240" class="diagram-svg">
-            <line x1="100" y1="110" x2="220" y2="110" stroke="#64748B" stroke-width="1.5" stroke-dasharray="4 4"/>
+        'V_Z': `<svg viewBox="0 0 450 260" class="diagram-svg">
+            <defs>
+                <marker id="arrow-start" viewBox="0 0 10 10" refX="0" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 10 0 L 0 5 L 10 10 z" fill="#EF4444"/></marker>
+                <marker id="arrow-end" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#EF4444"/></marker>
+            </defs>
             <path d="M 100 40 L 100 110 L 220 110 L 220 190" fill="none" stroke="royalblue" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
             <rect x="88" y="57" width="24" height="6" fill="#0F766E" rx="1"/>
             <rect x="208" y="157" width="24" height="6" fill="#0F766E" rx="1"/>
-            <line x1="70" y1="110" x2="70" y2="60" stroke="#EF4444" stroke-width="1.2"/>
-            <text x="50" y="90" font-size="12" font-weight="bold" fill="#EF4444">L1</text>
-            <line x1="100" y1="135" x2="220" y2="135" stroke="#EF4444" stroke-width="1.2"/>
-            <text x="155" y="128" font-size="12" font-weight="bold" fill="#EF4444">L2</text>
-            <line x1="245" y1="110" x2="245" y2="160" stroke="#EF4444" stroke-width="1.2"/>
-            <text x="255" y="140" font-size="12" font-weight="bold" fill="#EF4444">L3</text>
+            <line x1="70" y1="110" x2="70" y2="60" stroke="#EF4444" stroke-width="1.2" marker-start="url(#arrow-start)" marker-end="url(#arrow-end)"/>
+            <text x="55" y="90" font-size="12" font-weight="bold" fill="#EF4444">L1</text>
+            <line x1="100" y1="135" x2="220" y2="135" stroke="#EF4444" stroke-width="1.2" marker-start="url(#arrow-start)" marker-end="url(#arrow-end)"/>
+            <text x="160" y="128" font-size="12" font-weight="bold" fill="#EF4444" text-anchor="middle">L2</text>
+            <line x1="245" y1="110" x2="245" y2="160" stroke="#EF4444" stroke-width="1.2" marker-start="url(#arrow-start)" marker-end="url(#arrow-end)"/>
+            <text x="260" y="140" font-size="12" font-weight="bold" fill="#EF4444">L3</text>
         </svg>`,
         
-        // 수직 ㄷ자형 오리지널 시방서 완벽 매핑 도해 데이터 6종 대입부
-        'V_U_1': `<svg viewBox="0 0 400 240" class="diagram-svg">
-            <line x1="30" y1="160" x2="370" y2="160" stroke="#555555" stroke-width="1.5" stroke-dasharray="4 4"/>
-            <path d="M 40 160 L 120 160 L 120 70 L 260 70 L 260 160 L 360 160" fill="none" stroke="royalblue" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
-            <circle cx="40" cy="160" r="7" fill="white" stroke="royalblue" stroke-width="2.5"/>
-            <line x1="33" y1="160" x2="47" y2="160" stroke="royalblue" stroke-width="1.5"/>
-            <line x1="40" y1="153" x2="40" y2="167" stroke="royalblue" stroke-width="1.5"/>
-            <line x1="320" y1="160" x2="320" y2="185" stroke="black" stroke-width="2"/>
-            <line x1="305" y1="185" x2="335" y2="185" stroke="black" stroke-width="3"/>
-            <line x1="120" y1="45" x2="260" y2="45" stroke="#EF4444" stroke-width="1.2"/>
-            <text x="190" y="38" font-size="11" font-weight="bold" fill="#EF4444" text-anchor="middle">L4</text>
-            <line x1="260" y1="180" x2="320" y2="180" stroke="#EF4444" stroke-width="1.2"/>
-            <text x="290" y="195" font-size="11" font-weight="bold" fill="#EF4444" text-anchor="middle">L1</text>
-            <text x="15" y="22" font-size="12" font-weight="bold" fill="#0F766E">■ 1형: 2D 상세 기준 개요도</text>
+        // 1형 (이미지 3번째 1번 그림판 완벽 싱크로)
+        'V_U_1': `<svg viewBox="0 0 450 260" class="diagram-svg">
+            <text x="15" y="25" font-size="13" font-weight="bold" fill="#0F766E">■ 1형 (2D 정면 스트로크)</text>
+            <!-- 원형 기호 -->
+            <circle cx="90" cy="180" r="14" fill="none" stroke="royalblue" stroke-width="3"/>
+            <line x1="70" y1="180" x2="110" y2="180" stroke="#CBD5E1" stroke-width="2"/>
+            <line x1="75" y1="195" x2="105" y2="195" stroke="#475569" stroke-width="3"/>
+            <!-- 배관 본체 -->
+            <path d="M 90 180 L 90 85 L 250 85 L 250 160 L 320 160" fill="none" stroke="royalblue" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+            <!-- 가이드 슈 지지대 -->
+            <rect x="280" y="164" width="25" height="15" fill="none" stroke="#CBD5E1" stroke-width="3"/>
+            <line x1="270" y1="179" x2="315" y2="179" stroke="#64748B" stroke-width="3"/>
+            <!-- 스트로크 빨간선 및 주황색 바 차단 -->
+            <path d="M 65 180 L 65 60 L 250 60" fill="none" stroke="#EF4444" stroke-width="2.5"/>
+            <line x1="250" y1="60" x2="250" y2="78" stroke="#EF4444" stroke-width="2.5"/>
+            <line x1="243" y1="74" x2="250" y2="82" stroke="#EF4444" stroke-width="2.5"/>
+            <line x1="257" y1="74" x2="250" y2="82" stroke="#EF4444" stroke-width="2.5"/>
+            <line x1="55" y1="180" x2="75" y2="180" stroke="#F97316" stroke-width="3"/>
+            <!-- L1 측정 구간 수평 화살표 스트로크 -->
+            <line x1="250" y1="210" x2="280" y2="210" stroke="#EF4444" stroke-width="2.5"/>
+            <line x1="250" y1="205" x2="250" y2="215" stroke="#EF4444" stroke-width="2.5"/>
+            <line x1="280" y1="205" x2="280" y2="215" stroke="#EF4444" stroke-width="2.5"/>
+            <line x1="250" y1="210" x2="258" y2="205" stroke="#EF4444" stroke-width="2.5"/>
+            <line x1="250" y1="210" x2="258" y2="215" stroke="#EF4444" stroke-width="2.5"/>
+            <line x1="280" y1="210" x2="272" y2="205" stroke="#EF4444" stroke-width="2.5"/>
+            <line x1="280" y1="210" x2="272" y2="215" stroke="#EF4444" stroke-width="2.5"/>
+            <line x1="250" y1="160" x2="250" y2="220" stroke="#F97316" stroke-width="1.5" stroke-dasharray="3,3"/>
+            <line x1="280" y1="164" x2="280" y2="220" stroke="#F97316" stroke-width="1.5" stroke-dasharray="3,3"/>
+            <!-- 텍스트 매핑 -->
+            <text x="140" y="50" font-size="14" font-weight="bold" fill="#EF4444">L4</text>
+            <text x="265" y="235" font-size="13" font-weight="bold" fill="#EF4444" text-anchor="middle">L1</text>
         </svg>`,
-        'V_U_2': `<svg viewBox="0 0 400 240" class="diagram-svg">
-            <line x1="40" y1="180" x2="360" y2="120" stroke="#555555" stroke-width="1.5" stroke-dasharray="4 4"/>
-            <path d="M 40 180 L 140 163 L 140 83 L 260 63 L 260 139 L 360 120" fill="none" stroke="royalblue" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
-            <text x="200" y="50" font-size="11" font-weight="bold" fill="#EF4444" text-anchor="middle">L4</text>
-            <path d="M 256 135 L 264 143 M 264 135 L 256 143" stroke="#EF4444" stroke-width="2.5"/>
-            <text x="15" y="22" font-size="12" font-weight="bold" fill="#0F766E">■ 2형: 3D Type-1 상향 수직 우회</text>
+
+        // 2형 (이미지 3번째 2번 상단 그림판 완벽 싱크로 + 이미지 2번째 골뱅이 형태 반영)
+        'V_U_2': `<svg viewBox="0 0 450 260" class="diagram-svg">
+            <text x="15" y="25" font-size="13" font-weight="bold" fill="#0F766E">■ 2형 (3D Isometric 상향 입체)</text>
+            <!-- 골뱅이 기호 느낌의 지지축 단면 처리 -->
+            <path d="M 65 75 C 65 60, 85 60, 85 75 C 85 85, 70 85, 70 75 C 70 70, 80 70, 80 75" fill="none" stroke="#475569" stroke-width="2"/>
+            <line x1="75" y1="83" x2="75" y2="105" stroke="#475569" stroke-width="2"/>
+            <circle cx="75" cy="105" r="6" fill="none" stroke="#475569" stroke-width="2"/>
+            <line x1="65" y1="112" x2="85" y2="112" stroke="#475569" stroke-width="3"/>
+            <!-- 배관 본체 수평 ㄷ자 연장 형태 스트로크 -->
+            <line x1="50" y1="130" x2="140" y2="130" stroke="royalblue" stroke-width="7" stroke-linecap="round"/>
+            <path d="M 140 130 L 140 70 L 260 70 L 260 130 L 380 130" fill="none" stroke="royalblue" stroke-width="7" stroke-linejoin="round"/>
+            <!-- 3번째 그림판 기준 빨간색 안쪽 스트로크 및 차단 바 -->
+            <path d="M 165 130 L 165 90 L 235 90 L 235 130" fill="none" stroke="#EF4444" stroke-width="2.5"/>
+            <!-- 화살표 및 오렌지 단면 바 -->
+            <line x1="165" y1="130" x2="165" y2="122" stroke="#EF4444" stroke-width="2.5"/>
+            <line x1="235" y1="130" x2="235" y2="122" stroke="#EF4444" stroke-width="2.5"/>
+            <line x1="165" y1="130" x2="160" y2="122" stroke="#EF4444" stroke-width="2.5"/>
+            <line x1="165" y1="130" x2="170" y2="122" stroke="#EF4444" stroke-width="2.5"/>
+            <line x1="235" y1="130" x2="230" y2="122" stroke="#EF4444" stroke-width="2.5"/>
+            <line x1="235" y1="130" x2="240" y2="122" stroke="#EF4444" stroke-width="2.5"/>
+            <!-- 바깥쪽 단면 바 -->
+            <line x1="100" y1="120" x2="100" y2="140" stroke="#F97316" stroke-width="3"/>
+            <line x1="140" y1="120" x2="140" y2="140" stroke="#F97316" stroke-width="3"/>
+            <line x1="320" y1="120" x2="320" y2="140" stroke="#F97316" stroke-width="3"/>
+            <!-- 수평 지시선 화살표 스트로크 -->
+            <line x1="100" y1="150" x2="140" y2="150" stroke="#EF4444" stroke-width="2"/>
+            <line x1="100" y1="150" x2="110" y2="145" stroke="#EF4444" stroke-width="2"/>
+            <line x1="100" y1="150" x2="110" y2="155" stroke="#EF4444" stroke-width="2"/>
+            <line x1="140" y1="150" x2="130" y2="145" stroke="#EF4444" stroke-width="2"/>
+            <line x1="140" y1="150" x2="130" y2="155" stroke="#EF4444" stroke-width="2"/>
+            
+            <line x1="260" y1="150" x2="320" y2="150" stroke="#EF4444" stroke-width="2"/>
+            <line x1="260" y1="150" x2="270" y2="145" stroke="#EF4444" stroke-width="2"/>
+            <line x1="260" y1="150" x2="270" y2="155" stroke="#EF4444" stroke-width="2"/>
+            <line x1="320" y1="150" x2="310" y2="145" stroke="#EF4444" stroke-width="2"/>
+            <line x1="320" y1="150" x2="310" y2="155" stroke="#EF4444" stroke-width="2"/>
+            <!-- 텍스트 매핑 (골뱅이축 방향 유지) -->
+            <text x="200" y="110" font-size="13" font-weight="bold" fill="#EF4444" text-anchor="middle">L4</text>
+            <text x="120" y="170" font-size="12" font-weight="bold" fill="#EF4444" text-anchor="middle">L1</text>
         </svg>`,
-        'V_U_3': `<svg viewBox="0 0 400 240" class="diagram-svg">
-            <line x1="40" y1="130" x2="360" y2="110" stroke="#555555" stroke-width="1.5" stroke-dasharray="4 4"/>
-            <path d="M 40 130 L 140 124 L 100 180 L 220 172 L 260 116 L 360 110" fill="none" stroke="royalblue" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
-            <text x="160" y="193" font-size="11" font-weight="bold" fill="#EF4444" text-anchor="middle">L4</text>
-            <path d="M 216 168 L 224 176 M 224 168 L 216 176" stroke="#EF4444" stroke-width="2.5"/>
-            <text x="15" y="22" font-size="12" font-weight="bold" fill="#0F766E">■ 3형: 3D Type-2 전면 수평 우회</text>
+
+        // 3형 (이미지 3번째 3번 우상단 그림판 완벽 싱크로 + 경사선 가이드 고정단 처리)
+        'V_U_3': `<svg viewBox="0 0 450 260" class="diagram-svg">
+            <text x="15" y="25" font-size="13" font-weight="bold" fill="#0F766E">■ 3형 (3D 전면 경사 고정형)</text>
+            <!-- 2번째 고정단 축 기호 매핑 -->
+            <path d="M 60 45 C 60 30, 80 30, 80 45 C 80 55, 65 55, 65 45" fill="none" stroke="#475569" stroke-width="2"/>
+            <line x1="70" y1="53" x2="70" y2="75" stroke="#475569" stroke-width="2"/>
+            <line x1="60" y1="75" x2="80" y2="75" stroke="#475569" stroke-width="3"/>
+            <!-- 회색 경사 기준선 -->
+            <line x1="70" y1="100" x2="350" y2="160" stroke="#888888" stroke-width="3"/>
+            <!-- 주황색 지지단 패드 스트로크 -->
+            <line x1="130" y1="112" x2="160" y2="118" stroke="#F97316" stroke-width="4"/>
+            <!-- 파란색 상승 배관 계단형 라인 -->
+            <path d="M 145 115 L 145 70 L 240 70 L 240 30 L 340 30" fill="none" stroke="royalblue" stroke-width="7" stroke-linejoin="round"/>
+            <!-- 그림판과 완전 동일한 ㄷ자 추적 빨간선 스트로크 -->
+            <path d="M 125 70 L 220 70 L 220 30 L 350 30" fill="none" stroke="#EF4444" stroke-width="2.5"/>
+            <!-- 화살표 마감 처리 -->
+            <line x1="125" y1="70" x2="125" y2="95" stroke="#EF4444" stroke-width="2.5"/>
+            <line x1="125" y1="95" x2="120" y2="87" stroke="#EF4444" stroke-width="2.5"/>
+            <line x1="125" y1="95" x2="130" y2="87" stroke="#EF4444" stroke-width="2.5"/>
+            
+            <line x1="350" y1="30" x2="342" y2="25" stroke="#EF4444" stroke-width="2.5"/>
+            <line x1="350" y1="30" x2="342" y2="35" stroke="#EF4444" stroke-width="2.5"/>
+            <line x1="350" y1="20" x2="350" y2="40" stroke="#F97316" stroke-width="2.5"/>
+            <!-- 텍스트 매핑 -->
+            <text x="180" y="55" font-size="14" font-weight="bold" fill="#EF4444">L4</text>
         </svg>`,
-        'V_U_4': `<svg viewBox="0 0 400 240" class="diagram-svg">
-            <line x1="40" y1="150" x2="360" y2="130" stroke="#555555" stroke-width="1.5" stroke-dasharray="4 4"/>
-            <path d="M 40 150 L 140 144 L 180 90 L 300 82 L 260 136 L 360 130" fill="none" stroke="royalblue" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
-            <text x="240" y="75" font-size="11" font-weight="bold" fill="#EF4444" text-anchor="middle">L4</text>
-            <path d="M 256 132 L 264 140 M 264 132 L 256 140" stroke="#EF4444" stroke-width="2.5"/>
-            <text x="15" y="22" font-size="12" font-weight="bold" fill="#0F766E">■ 4형: 3D Type-3 후면 수평 우회</text>
+
+        // 4형 (이미지 3번째 4번 하단 중앙그림판 완벽 싱크로)
+        'V_U_4': `<svg viewBox="0 0 450 260" class="diagram-svg">
+            <text x="15" y="25" font-size="13" font-weight="bold" fill="#0F766E">■ 4형 (3D 후면 절곡 오프셋)</text>
+            <!-- 배관 본체 스트로크 -->
+            <path d="M 150 200 L 150 110 L 260 110 L 320 60" fill="none" stroke="royalblue" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+            <!-- 그림판 4번과 동일한 수직 하향 화살표 스트로크 및 오렌지 바 -->
+            <path d="M 315 60 L 250 110 L 120 110" fill="none" stroke="#EF4444" stroke-width="2.5"/>
+            <line x1="120" y1="110" x2="120" y2="200" stroke="#EF4444" stroke-width="2.5"/>
+            <!-- 화살표 머리 및 하단 단면 차단선 -->
+            <line x1="120" y1="200" x2="115" y2="190" stroke="#EF4444" stroke-width="2.5"/>
+            <line x1="120" y1="200" x2="125" y2="190" stroke="#EF4444" stroke-width="2.5"/>
+            <line x1="110" y1="200" x2="130" y2="200" stroke="#F97316" stroke-width="3"/>
+            <!-- 상단 경사 한계선 오렌지 바 -->
+            <line x1="310" y1="50" x2="325" y2="70" stroke="#F97316" stroke-width="3"/>
+            <!-- 텍스트 매핑 -->
+            <text x="210" y="95" font-size="14" font-weight="bold" fill="#EF4444">L4</text>
         </svg>`,
-        'V_U_5': `<svg viewBox="0 0 400 240" class="diagram-svg">
-            <line x1="40" y1="70" x2="360" y2="110" stroke="#555555" stroke-width="1.5" stroke-dasharray="4 4"/>
-            <path d="M 40 70 L 140 82 L 140 170 L 260 185 L 260 97 L 360 110" fill="none" stroke="royalblue" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
-            <text x="200" y="202" font-size="11" font-weight="bold" fill="#EF4444" text-anchor="middle">L4</text>
-            <path d="M 256 93 L 264 101 M 264 93 L 256 101" stroke="#EF4444" stroke-width="2.5"/>
-            <text x="15" y="22" font-size="12" font-weight="bold" fill="#0F766E">■ 5형: 3D Type-4 하향 수직 우회</text>
+
+        // 5형 (이미지 3번째 5형식 우하단 하향 배관 구조 완벽 싱크로)
+        'V_U_5': `<svg viewBox="0 0 450 260" class="diagram-svg">
+            <text x="15" y="25" font-size="13" font-weight="bold" fill="#0F766E">■ 5형 (3D 하향 단차형 수직 스트로크)</text>
+            <!-- 2번째 파일 하단 축 기호 감성 매핑 -->
+            <path d="M 120 45 C 120 30, 140 30, 140 45" fill="none" stroke="#475569" stroke-width="2"/>
+            <line x1="130" y1="45" x2="130" y2="70" stroke="#475569" stroke-width="2"/>
+            <circle cx="130" cy="70" r="6" fill="none" stroke="#475569" stroke-width="2"/>
+            <line x1="120" y1="77" x2="140" y2="77" stroke="#475569" stroke-width="3"/>
+            <!-- 배관 본체 스트로크 -->
+            <path d="M 90 190 L 150 190 L 150 100 L 290 100" fill="none" stroke="royalblue" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+            <!-- 그림판 5번 형태의 안쪽 역추적 화살표 스트로크 라인 -->
+            <path d="M 270 100 L 200 100 L 200 170 L 110 170" fill="none" stroke="#EF4444" stroke-width="2.5"/>
+            <!-- 양방향 지시 화살표 및 오렌지 단면 차단선 매핑 -->
+            <line x1="270" y1="100" x2="262" y2="95" stroke="#EF4444" stroke-width="2.5"/>
+            <line x1="270" y1="100" x2="262" y2="105" stroke="#EF4444" stroke-width="2.5"/>
+            <line x1="270" y1="90" x2="270" y2="110" stroke="#F97316" stroke-width="3"/>
+            
+            <line x1="110" y1="170" x2="110" y2="195" stroke="#EF4444" stroke-width="2.5"/>
+            <line x1="110" y1="195" x2="105" y2="187" stroke="#EF4444" stroke-width="2.5"/>
+            <line x1="110" y1="195" x2="115" y2="187" stroke="#EF4444" stroke-width="2.5"/>
+            <line x1="100" y1="195" x2="120" y2="195" stroke="#F97316" stroke-width="3"/>
+            <!-- 텍스트 매핑 -->
+            <text x="235" y="85" font-size="14" font-weight="bold" fill="#EF4444">L4</text>
         </svg>`,
-        'V_U_6': `<svg viewBox="0 0 400 240" class="diagram-svg">
-            <line x1="40" y1="140" x2="360" y2="110" stroke="#555555" stroke-width="1.5" stroke-dasharray="4 4"/>
-            <path d="M 40 140 L 140 131 L 170 200 L 290 185 L 260 120 L 360 110" fill="none" stroke="royalblue" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
-            <text x="230" y="200" font-size="11" font-weight="bold" fill="#EF4444" text-anchor="middle">L4</text>
-            <path d="M 256 116 L 264 124 M 264 116 L 256 124" stroke="#EF4444" stroke-width="2.5"/>
-            <text x="15" y="22" font-size="12" font-weight="bold" fill="#0F766E">■ 6형: 3D Type-5 복합 입체 우회</text>
+
+        // 6형 (3D 입체 복합 다단 절곡형 - 이미지 2번째의 입체감과 3번째 스트로크 설계 사양 조합 구조)
+        'V_U_6': `<svg viewBox="0 0 450 260" class="diagram-svg">
+            <text x="15" y="25" font-size="13" font-weight="bold" fill="#0F766E">■ 6형 (3D 다단 복합 입체 구조)</text>
+            <!-- 상단 기준 고정점 기호 -->
+            <circle cx="160" cy="45" r="8" fill="none" stroke="#475569" stroke-width="2"/>
+            <line x1="160" y1="53" x2="160" y2="70" stroke="#475569" stroke-width="2"/>
+            <!-- 메인 파란색 배관 입체 선형 스트로크 -->
+            <path d="M 80 210 L 180 210 L 180 120 L 280 90 L 280 160 L 380 140" fill="none" stroke="royalblue" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+            <!-- 빨간색 측정 연산 스트로크 가이드선 완전 매칭 -->
+            <path d="M 210 110 L 280 90 L 280 160 L 350 145" fill="none" stroke="#EF4444" stroke-width="2.5"/>
+            <!-- 화살표 및 종단 바 처리 -->
+            <line x1="210" y1="110" x2="218" y2="115" stroke="#EF4444" stroke-width="2.5"/>
+            <line x1="210" y1="110" x2="214" y2="103" stroke="#EF4444" stroke-width="2.5"/>
+            <line x1="205" y1="100" x2="215" y2="120" stroke="#F97316" stroke-width="2.5"/>
+            
+            <line x1="350" y1="145" x2="342" y2="140" stroke="#EF4444" stroke-width="2.5"/>
+            <line x1="350" y1="145" x2="346" y2="152" stroke="#EF4444" stroke-width="2.5"/>
+            <line x1="350" y1="135" x2="350" y2="155" stroke="#F97316" stroke-width="2.5"/>
+            <!-- 텍스트 매핑 -->
+            <text x="260" y="75" font-size="14" font-weight="bold" fill="#EF4444">L4</text>
         </svg>`
     };
 
@@ -538,12 +652,26 @@
         document.getElementById("mTabPlastic").classList.toggle("active", mode === 'Plastic');
         
         const plasticContainer = document.getElementById("plasticMaterialContainer");
+        const normalBendingWrapper = document.getElementById("normalBendingWrapper");
+        const guidelineCard = document.getElementById("guidelineCard");
+        const envHeading = document.getElementById("envSettingHeading");
+
         if (mode === 'Plastic') {
             plasticContainer.style.display = "block";
-            document.getElementById("mainTitleHeader").textContent = "플라스틱배관 굴절부 지지간격 기술검토";
-            configState.size = "40A"; 
+            normalBendingWrapper.style.display = "none";
+            guidelineCard.style.display = "none";
+            envHeading.textContent = "플라스틱 재질 및 규격 설정";
+            document.getElementById("mainTitleHeader").textContent = "플라스틱 배관 기준 지지간격 기술검토";
+            
+            const validSizes = Object.keys(plasticPipeMaster[configState.plasticMat]);
+            if (!validSizes.includes(configState.size)) {
+                configState.size = validSizes[0] || "40A";
+            }
         } else {
             plasticContainer.style.display = "none";
+            normalBendingWrapper.style.display = "block";
+            guidelineCard.style.display = "block";
+            envHeading.textContent = "검토 환경 및 형상 원터치 설정";
             document.getElementById("mainTitleHeader").textContent = "배관 수평/수직 굴절부 지지간격 기술검토";
             configState.size = "50A";
         }
@@ -590,10 +718,7 @@
     function renderSizeGrid() {
         const container = document.getElementById("sizeButtonContainer");
         container.innerHTML = "";
-        
-        const targetSource = configState.materialMode === 'Normal' 
-            ? normalPipeData 
-            : plasticPipeMaster[configState.plasticMat];
+        const targetSource = configState.materialMode === 'Normal' ? normalPipeData : plasticPipeMaster[configState.plasticMat];
 
         Object.keys(targetSource).forEach(size => {
             const btn = document.createElement("button");
@@ -611,68 +736,53 @@
 
     function buildSidebarTables() {
         const wrapper = document.getElementById("sidebarContent");
+        const isNormal = configState.materialMode === 'Normal';
+        const pData = isNormal ? normalPipeData : plasticPipeMaster[configState.plasticMat];
+        const arr = Object.keys(pData);
         
-        if (configState.materialMode === 'Normal') {
-            const arr = Object.keys(normalPipeData);
-            let trRowsHtml = '';
-            for (let i = 0; i < arr.length; i += 2) {
-                let k1 = arr[i];
-                let k2 = arr[i + 1] || '';
-                trRowsHtml += `
-                    <tr>
-                        <td id="sideCell-${k1}">${k1}<br><b>${normalPipeData[k1]}m</b></td>
-                        <td id="sideCell-${k2}">${k2 ? `${k2}<br><b>${normalPipeData[k2]}m</b>` : ''}</td>
-                    </tr>`;
-            }
-            wrapper.innerHTML = `
-                <div class="table-wrapper">
-                    <div class="table-title">일반배관 기준 간격 (S)</div>
-                    <table class="data-table">
-                        <thead><tr><th>SIZE</th><th>SIZE</th></tr></thead>
-                        <tbody>${trRowsHtml}</tbody>
-                    </table>
-                </div>`;
-        } else {
-            const pData = plasticPipeMaster[configState.plasticMat];
-            const arr = Object.keys(pData);
-            let trRowsHtml = '';
-            for (let i = 0; i < arr.length; i += 2) {
-                let k1 = arr[i];
-                let k2 = arr[i + 1] || '';
-                trRowsHtml += `
-                    <tr>
-                        <td id="sideCell-${k1}">${k1}<br><b>${pData[k1]}m</b></td>
-                        <td id="sideCell-${k2}">${k2 ? `${k2}<br><b>${pData[k2]}m</b>` : ''}</td>
-                    </tr>`;
-            }
-            wrapper.innerHTML = `
-                <div class="table-wrapper">
-                    <div class="table-title">플라스틱 기준 간격 (S)</div>
-                    <table class="data-table">
-                        <thead><tr><th>SIZE</th><th>SIZE</th></tr></thead>
-                        <tbody>${trRowsHtml}</tbody>
-                    </table>
-                </div>`;
+        let trRowsHtml = '';
+        for (let i = 0; i < arr.length; i += 2) {
+            let k1 = arr[i];
+            let k2 = arr[i + 1] || '';
+            trRowsHtml += `
+                <tr>
+                    <td id="sideCell-${k1}">${k1}<br><b>${pData[k1]}m</b></td>
+                    <td id="sideCell-${k2}">${k2 ? `${k2}<br><b>${pData[k2]}m</b>` : ''}</td>
+                </tr>`;
         }
+        wrapper.innerHTML = `
+            <div class="table-wrapper">
+                <div class="table-title">${isNormal ? '일반배관' : '플라스틱'} 기준 간격 (S) 참고표</div>
+                <table class="data-table">
+                    <thead><tr><th>SIZE</th><th>SIZE</th></tr></thead>
+                    <tbody>${trRowsHtml}</tbody>
+                </table>
+            </div>`;
     }
 
     function processAppCalculation() {
         const { materialMode, direction, type, size, plasticMat, subVariation } = configState;
-        
         const S_m = materialMode === 'Normal' ? normalPipeData[size] : plasticPipeMaster[plasticMat][size];
         if(!S_m) return; 
-        
-        const S_mm = S_m * 1000;
 
         document.querySelectorAll(".data-table td").forEach(td => td.classList.remove("highlight-cell"));
         document.getElementById("sideCell-" + size)?.classList.add("highlight-cell");
 
-        const subWrapper = document.getElementById("subTypeWrapper");
-        if (direction === 'V' && type === 'U') {
-            subWrapper.style.display = "block";
-        } else {
-            subWrapper.style.display = "none";
+        const card = document.getElementById("finalResultCard");
+        const statusText = document.getElementById("finalStatusText");
+        const descText = document.getElementById("finalDescText");
+
+        if (materialMode === 'Plastic') {
+            card.className = "result-panel pass";
+            let matText = {"PP_Liquid":"PP 배관 (상온액체)", "PP_Gas":"PP 배관 (상온기체)", "PE_SDR13":"국산 PE (SDR13.5)", "PVC_PN16":"PVC 배관 (PN16)"}[plasticMat];
+            statusText.textContent = `${matText} [${size}]`;
+            descText.innerHTML = `설계상 직선구간 <b>기준 지지간격 (S)은 ${S_m} m</b> 입니다.<br>• 플라스틱 배관은 시방 기준 굴절부 300mm 이내 Support 고정이 권장됩니다.`;
+            return;
         }
+
+        const S_mm = S_m * 1000;
+        const subWrapper = document.getElementById("subTypeWrapper");
+        subWrapper.style.display = (direction === 'V' && type === 'U') ? "block" : "none";
 
         const banner = document.getElementById("formulaBannerText");
         if (direction === 'H') {
@@ -682,23 +792,14 @@
         } else {
             if (type === 'L') banner.innerHTML = `📋 <b>수직 L자형:</b> L1 + L2 ≤ S의 70% 이하 [합격선: ${(S_mm * 0.7).toFixed(0)} mm]`;
             else if (type === 'U') {
-                if(subVariation === 1) {
-                    banner.innerHTML = `📋 <b>수직 ㄷ자형 [1형 (2D상세)]:</b> L1 + L4 ≤ S의 80% 이하 [합격선: ${(S_mm * 0.8).toFixed(0)} mm]`;
-                } else if(subVariation === 2) {
-                    banner.innerHTML = `📋 <b>수직 ㄷ자형 [2형 (3D상향)]:</b> L1 + L4 ≤ S의 80% 이하 [합격선: ${(S_mm * 0.8).toFixed(0)} mm]`;
-                } else {
-                    let typeName = subVariation === 3 ? "3형 (3D전면)" : subVariation === 4 ? "4형 (3D후면)" : subVariation === 5 ? "5형 (3D하향)" : "6형 (3D복합)";
-                    banner.innerHTML = `📋 <b>수직 ㄷ자형 [${typeName}]:</b> L4 ≤ S의 80% 이하 [합격선: ${(S_mm * 0.8).toFixed(0)} mm] (L1은 자동 0 처리)`;
-                }
+                if(subVariation <= 2) banner.innerHTML = `📋 <b>수직 ㄷ자형 [${subVariation}형]:</b> L1 + L4 ≤ S의 80% 이하 [합격선: ${(S_mm * 0.8).toFixed(0)} mm]`;
+                else banner.innerHTML = `📋 <b>수직 ㄷ자형 [${subVariation}형]:</b> L4 ≤ S의 80% 이하 [합격선: ${(S_mm * 0.8).toFixed(0)} mm]`;
             }
             else if (type === 'Z') banner.innerHTML = `📋 <b>수직 Z자형:</b> L1 + L2 + L3 ≤ S의 70% 이하 [합격선: ${(S_mm * 0.7).toFixed(0)} mm]`;
         }
 
         const diagContainer = document.getElementById("diagramContainer");
-        let svgKey = direction + "_" + type;
-        if (direction === 'V' && type === 'U') {
-            svgKey = 'V_U_' + subVariation;
-        }
+        let svgKey = (direction === 'V' && type === 'U') ? 'V_U_' + subVariation : direction + "_" + type;
         diagContainer.innerHTML = svgTemplates[svgKey] || "";
 
         renderInputFields(type);
@@ -715,23 +816,21 @@
         } else {
             if (type === 'L') labels = ['L1', 'L2'];
             else if (type === 'Z') labels = ['L1', 'L2', 'L3'];
-            else if (type === 'U') {
-                labels = (configState.subVariation <= 2) ? ['L1', 'L4'] : ['L4'];
-            }
+            else if (type === 'U') labels = (configState.subVariation <= 2) ? ['L1', 'L4'] : ['L4'];
         }
 
         labels.forEach(lbl => {
             let div = document.createElement("div");
-            div.innerHTML = `<label>${lbl} 실측 데이터 (mm)</label>
-                             <input type="number" id="val_${lbl}" placeholder="치수 입력" oninput="evaluateMetrics()">`;
+            div.innerHTML = `<label>${lbl} 현장 실측치 입력 (mm)</label>
+                             <input type="number" inputmode="numeric" id="val_${lbl}" placeholder="여기를 눌러 수치 입력" oninput="evaluateMetrics()">`;
             container.appendChild(div);
         });
     }
 
     function evaluateMetrics() {
-        const { materialMode, direction, type, size, plasticMat, subVariation } = configState;
-        const S_m = materialMode === 'Normal' ? normalPipeData[size] : plasticPipeMaster[plasticMat][size];
-        const S_mm = S_m * 1000;
+        if(configState.materialMode === 'Plastic') return;
+        const { direction, type, size, subVariation } = configState;
+        const S_mm = normalPipeData[size] * 1000;
 
         const card = document.getElementById("finalResultCard");
         const statusText = document.getElementById("finalStatusText");
@@ -758,35 +857,33 @@
         if (direction === 'H') {
             if (type === 'L') {
                 let sum = dataMap['L1'] + dataMap['L2']; let max = S_mm * 0.7; isPass = (sum <= max);
-                calcLog = `실측 총합(L1+L2): <b>${sum}mm</b> / 합격 기준선: <b>${max.toFixed(0)}mm</b>`;
+                calcLog = `측정 총합(L1+L2): <b>${sum}mm</b> / 합격선: <b>${max.toFixed(0)}mm</b>`;
             } else if (type === 'U') {
                 let sum = (2 * dataMap['L3']) + dataMap['L4']; let max = S_mm * 0.9; isPass = (sum <= max);
-                calcLog = `실측 연산(2×L3+L4): <b>${sum}mm</b> / 합격 기준선: <b>${max.toFixed(0)}mm</b>`;
+                calcLog = `측정 연산(2×L3+L4): <b>${sum}mm</b> / 합격선: <b>${max.toFixed(0)}mm</b>`;
             } else if (type === 'Z') {
                 let sum = dataMap['L5'] + dataMap['L6'] + dataMap['L7']; let max = S_mm * 0.9; isPass = (sum <= max);
-                calcLog = `실측 총합(L5+L6+L7): <b>${sum}mm</b> / 합격 기준선: <b>${max.toFixed(0)}mm</b>`;
+                calcLog = `측정 총합(L5+L6+L7): <b>${sum}mm</b> / 합격선: <b>${max.toFixed(0)}mm</b>`;
             }
         } else {
             if (type === 'L') {
                 let sum = dataMap['L1'] + dataMap['L2']; let max = S_mm * 0.7; isPass = (sum <= max);
-                calcLog = `수직 연산(L1+L2): <b>${sum}mm</b> / 허용 한도치: <b>${max.toFixed(0)}mm</b>`;
+                calcLog = `수직 연산(L1+L2): <b>${sum}mm</b> / 허용 한도: <b>${max.toFixed(0)}mm</b>`;
             } else if (type === 'U') {
-                let sum = dataMap['L1'] + dataMap['L4']; let max = S_mm * 0.8; isPass = (sum <= max);
-                calcLog = subVariation <= 2 
-                    ? `수직 ㄷ자 연산(L1+L4): <b>${sum}mm</b> / 허용범위(S의 80%): <b>${max.toFixed(0)}mm</b>`
-                    : `수직 ㄷ자 연산(L4 단독): <b>${sum}mm</b> (L1=0 고정) / 허용범위(S의 80%): <b>${max.toFixed(0)}mm</b>`;
+                let sum = (subVariation <= 2) ? (dataMap['L1'] + dataMap['L4']) : dataMap['L4']; 
+                let max = S_mm * 0.8; isPass = (sum <= max);
+                calcLog = (subVariation <= 2) 
+                    ? `수직 ㄷ자(L1+L4): <b>${sum}mm</b> / 허용 한도: <b>${max.toFixed(0)}mm</b>`
+                    : `수직 ㄷ자(L4 단독): <b>${sum}mm</b> / 허용 한도: <b>${max.toFixed(0)}mm</b> (L1=0)`;
             } else if (type === 'Z') {
                 let sum = dataMap['L1'] + dataMap['L2'] + dataMap['L3']; let max = S_mm * 0.7; isPass = (sum <= max);
-                calcLog = `수직 Z자형 연산(L1+L2+L3): <b>${sum}mm</b> / 허용범위(S의 70%): <b>${max.toFixed(0)}mm</b>`;
+                calcLog = `수직 Z자형 연산: <b>${sum}mm</b> / 허용 한도: <b>${max.toFixed(0)}mm</b>`;
             }
         }
 
-        if (isPass) {
-            card.className = "result-panel pass"; statusText.textContent = "PASS (시방 규격 적합)";
-        } else {
-            card.className = "result-panel fail"; statusText.textContent = "FAIL (규격 초과 / 행거 재배치 필요)";
-        }
-        descText.innerHTML = calcLog + `<br>• 현재 선택된 조건의 설계상 배관 지지간격 기준값 (S): <b>${S_m} m</b>`;
+        card.className = "result-panel " + (isPass ? "pass" : "fail");
+        statusText.textContent = isPass ? "PASS (시방 규격 적합)" : "FAIL (규격 초과)";
+        descText.innerHTML = calcLog + `<br>• 설계상 배관 지지간격 기준값 (S): <b>${normalPipeData[size]} m</b>`;
     }
 </script>
 </body>
