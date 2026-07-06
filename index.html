@@ -638,10 +638,10 @@
             <rect x="280" y="164" width="25" height="15" fill="none" stroke="#CBD5E1" stroke-width="3"/>
             <line x1="270" y1="179" x2="315" y2="179" stroke="#64748B" stroke-width="3"/>
             <!-- 스트로크 빨간선 및 주황색 바 차단 -->
-            <path d="M 65 180 L 65 60 L 250 60" fill="none" stroke="#EF4444" stroke-width="2.5"/>
-            <line x1="250" y1="60" x2="250" y2="78" stroke="#EF4444" stroke-width="2.5"/>
-            <line x1="243" y1="74" x2="250" y2="82" stroke="#EF4444" stroke-width="2.5"/>
-            <line x1="257" y1="74" x2="250" y2="82" stroke="#EF4444" stroke-width="2.5"/>
+            <path d="M 65 180 L 65 60 L 265 60" fill="none" stroke="#EF4444" stroke-width="2.5"/>
+            <line x1="265" y1="60" x2="265" y2="145" stroke="#EF4444" stroke-width="2.5"/>
+            <line x1="258" y1="137" x2="265" y2="145" stroke="#EF4444" stroke-width="2.5"/>
+            <line x1="272" y1="137" x2="265" y2="145" stroke="#EF4444" stroke-width="2.5"/>
             <line x1="55" y1="180" x2="75" y2="180" stroke="#F97316" stroke-width="3"/>
             <!-- L1 측정 구간 수평 화살표 스트로크 -->
             <line x1="250" y1="210" x2="280" y2="210" stroke="#EF4444" stroke-width="2.5"/>
@@ -668,32 +668,39 @@
             <line x1="65" y1="112" x2="85" y2="112" stroke="#475569" stroke-width="3"/>
             <!-- 배관 본체 수평 ㄷ자 연장 형태 스트로크 -->
             <line x1="50" y1="130" x2="140" y2="130" stroke="royalblue" stroke-width="7" stroke-linecap="round"/>
-            <path d="M 140 130 L 140 70 L 260 70 L 260 130 L 380 130" fill="none" stroke="royalblue" stroke-width="7" stroke-linejoin="round"/>
-            <!-- 3번째 그림판 기준 빨간색 안쪽 스트로크 및 차단 바 -->
-            <path d="M 165 130 L 165 90 L 235 90 L 235 130" fill="none" stroke="#EF4444" stroke-width="2.5"/>
-            <!-- 화살표 및 오렌지 단면 바 -->
-            <line x1="165" y1="130" x2="165" y2="122" stroke="#EF4444" stroke-width="2.5"/>
-            <line x1="235" y1="130" x2="235" y2="122" stroke="#EF4444" stroke-width="2.5"/>
-            <line x1="165" y1="130" x2="160" y2="122" stroke="#EF4444" stroke-width="2.5"/>
-            <line x1="165" y1="130" x2="170" y2="122" stroke="#EF4444" stroke-width="2.5"/>
-            <line x1="235" y1="130" x2="230" y2="122" stroke="#EF4444" stroke-width="2.5"/>
-            <line x1="235" y1="130" x2="240" y2="122" stroke="#EF4444" stroke-width="2.5"/>
-            <!-- 바깥쪽 단면 바 -->
-            <line x1="100" y1="120" x2="100" y2="140" stroke="#F97316" stroke-width="3"/>
-            <line x1="140" y1="120" x2="140" y2="140" stroke="#F97316" stroke-width="3"/>
-            <line x1="320" y1="120" x2="320" y2="140" stroke="#F97316" stroke-width="3"/>
-            <!-- 수평 지시선 화살표 스트로크 -->
-            <line x1="100" y1="150" x2="140" y2="150" stroke="#EF4444" stroke-width="2"/>
-            <line x1="100" y1="150" x2="110" y2="145" stroke="#EF4444" stroke-width="2"/>
-            <line x1="100" y1="150" x2="110" y2="155" stroke="#EF4444" stroke-width="2"/>
-            <line x1="140" y1="150" x2="130" y2="145" stroke="#EF4444" stroke-width="2"/>
-            <line x1="140" y1="150" x2="130" y2="155" stroke="#EF4444" stroke-width="2"/>
-            
-            <line x1="260" y1="150" x2="320" y2="150" stroke="#EF4444" stroke-width="2"/>
-            <line x1="260" y1="150" x2="270" y2="145" stroke="#EF4444" stroke-width="2"/>
-            <line x1="260" y1="150" x2="270" y2="155" stroke="#EF4444" stroke-width="2"/>
-            <line x1="320" y1="150" x2="310" y2="145" stroke="#EF4444" stroke-width="2"/>
-            <line x1="320" y1="150" x2="310" y2="155" stroke="#EF4444" stroke-width="2"/>
+<path d="M 140 130 L 140 70 L 260 70 L 260 130 L 380 130"
+      fill="none" stroke="royalblue" stroke-width="7" stroke-linejoin="round"/>
+
+<!-- 빨간 내부 스트로크 -->
+<path d="M 170 150
+         L 170 90
+         L 285 90
+         L 285 150"
+      fill="none"
+      stroke="#EF4444"
+      stroke-width="2.5"/>
+
+<!-- 주황 기준 바 -->
+<line x1="70"  y1="120" x2="70"  y2="160" stroke="#F97316" stroke-width="3"/>
+<line x1="140" y1="120" x2="140" y2="160" stroke="#F97316" stroke-width="3"/>
+<line x1="340" y1="120" x2="340" y2="160" stroke="#F97316" stroke-width="3"/>
+
+<!-- 왼쪽 양방향 화살표 -->
+<line x1="85" y1="150" x2="125" y2="150" stroke="#EF4444" stroke-width="2"/>
+<line x1="85" y1="150" x2="95" y2="140" stroke="#EF4444" stroke-width="2"/>
+<line x1="85" y1="150" x2="95" y2="160" stroke="#EF4444" stroke-width="2"/>
+<line x1="125" y1="150" x2="115" y2="140" stroke="#EF4444" stroke-width="2"/>
+<line x1="125" y1="150" x2="115" y2="160" stroke="#EF4444" stroke-width="2"/>
+
+<!-- 오른쪽 → -->
+<line x1="285" y1="150" x2="330" y2="150" stroke="#EF4444" stroke-width="2"/>
+<line x1="330" y1="150" x2="320" y2="145" stroke="#EF4444" stroke-width="2"/>
+<line x1="330" y1="150" x2="320" y2="155" stroke="#EF4444" stroke-width="2"/>
+<!-- 왼쪽 ← (화살표 몸통 선 연결 및 주황선에서 이격) --> 
+<line x1="171" y1="150" x2="150" y2="150" stroke="#EF4444" stroke-width="2"/> 
+<line x1="150" y1="150" x2="160" y2="145" stroke="#EF4444" stroke-width="2"/> 
+<line x1="150" y1="150" x2="160" y2="155" stroke="#EF4444" stroke-width="2"/>
+
             <!-- 텍스트 매핑 (골뱅이축 방향 유지) -->
             <text x="200" y="110" font-size="13" font-weight="bold" fill="#EF4444" text-anchor="middle">L4</text>
             <text x="120" y="170" font-size="12" font-weight="bold" fill="#EF4444" text-anchor="middle">L1</text>
@@ -712,16 +719,33 @@
             <line x1="130" y1="112" x2="160" y2="118" stroke="#F97316" stroke-width="4"/>
             <!-- 파란색 상승 배관 계단형 라인 -->
             <path d="M 145 115 L 145 70 L 240 70 L 240 30 L 340 30" fill="none" stroke="royalblue" stroke-width="7" stroke-linejoin="round"/>
-            <!-- 그림판과 완전 동일한 ㄷ자 추적 빨간선 스트로크 -->
-            <path d="M 125 70 L 220 70 L 220 30 L 350 30" fill="none" stroke="#EF4444" stroke-width="2.5"/>
-            <!-- 화살표 마감 처리 -->
-            <line x1="125" y1="70" x2="125" y2="95" stroke="#EF4444" stroke-width="2.5"/>
-            <line x1="125" y1="95" x2="120" y2="87" stroke="#EF4444" stroke-width="2.5"/>
-            <line x1="125" y1="95" x2="130" y2="87" stroke="#EF4444" stroke-width="2.5"/>
-            
-            <line x1="350" y1="30" x2="342" y2="25" stroke="#EF4444" stroke-width="2.5"/>
-            <line x1="350" y1="30" x2="342" y2="35" stroke="#EF4444" stroke-width="2.5"/>
-            <line x1="350" y1="20" x2="350" y2="40" stroke="#F97316" stroke-width="2.5"/>
+           <!-- ㄷ자 추적 빨간선 (배관과 이격) -->
+<path d="M 125 95
+         L 125 62
+         L 215 62
+         L 215 24
+         L 338 24"
+      fill="none"
+      stroke="#EF4444"
+      stroke-width="2.5"/>
+
+<!-- 시작 화살표 (주황색 선과 동일선상) -->
+<line x1="125" y1="62" x2="125" y2="95"
+      stroke="#EF4444" stroke-width="2.5"/>
+<line x1="125" y1="95" x2="120" y2="87"
+      stroke="#EF4444" stroke-width="2.5"/>
+<line x1="125" y1="95" x2="130" y2="87"
+      stroke="#EF4444" stroke-width="2.5"/>
+
+<!-- 끝 화살표 -->
+<line x1="338" y1="24" x2="330" y2="19"
+      stroke="#EF4444" stroke-width="2.5"/>
+<line x1="338" y1="24" x2="330" y2="29"
+      stroke="#EF4444" stroke-width="2.5"/>
+
+<!-- 끝 위치 표시 (배관 끝단 이전) -->
+<line x1="338" y1="14" x2="338" y2="34"
+      stroke="#F97316" stroke-width="2.5"/>
             <!-- 텍스트 매핑 -->
             <text x="180" y="55" font-size="14" font-weight="bold" fill="#EF4444">L4</text>
         </svg>`,
@@ -729,17 +753,21 @@
         // 4형 (이미지 3번째 4번 하단 중앙그림판 완벽 싱크로)
         'V_U_4': `<svg viewBox="0 0 450 260" class="diagram-svg">
             <text x="15" y="25" font-size="13" font-weight="bold" fill="#0F766E">■ 4형 (3D 후면 절곡 오프셋)</text>
-            <!-- 배관 본체 스트로크 -->
-            <path d="M 150 200 L 150 110 L 260 110 L 320 60" fill="none" stroke="royalblue" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
-            <!-- 그림판 4번과 동일한 수직 하향 화살표 스트로크 및 오렌지 바 -->
-            <path d="M 315 60 L 250 110 L 120 110" fill="none" stroke="#EF4444" stroke-width="2.5"/>
-            <line x1="120" y1="110" x2="120" y2="200" stroke="#EF4444" stroke-width="2.5"/>
-            <!-- 화살표 머리 및 하단 단면 차단선 -->
-            <line x1="120" y1="200" x2="115" y2="190" stroke="#EF4444" stroke-width="2.5"/>
-            <line x1="120" y1="200" x2="125" y2="190" stroke="#EF4444" stroke-width="2.5"/>
-            <line x1="110" y1="200" x2="130" y2="200" stroke="#F97316" stroke-width="3"/>
-            <!-- 상단 경사 한계선 오렌지 바 -->
-            <line x1="310" y1="50" x2="325" y2="70" stroke="#F97316" stroke-width="3"/>
+            <!-- L자형 배관 본체 스트로크 (정중앙 기준 배치) -->
+<path d="M 120 230 L 120 130 L 290 130" fill="none" stroke="royalblue" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+
+<!-- 화살표 경로: 파이프와 겹치지 않게 간격 띄움 (왼쪽으로 15, 위로 15) -->
+<path d="M 105 215 L 105 115 L 275 115" fill="none" stroke="#EF4444" stroke-width="2.5"/>
+
+<!-- 수직 하향 화살표 머리 및 하단 차단선 -->
+<line x1="105" y1="215" x2="100" y2="207" stroke="#EF4444" stroke-width="2.5"/>
+<line x1="105" y1="215" x2="110" y2="207" stroke="#EF4444" stroke-width="2.5"/>
+<line x1="95" y1="215" x2="115" y2="215" stroke="#F97316" stroke-width="3"/>
+
+<!-- 수평 우측 화살표 머리 및 우측 차단선 -->
+<line x1="275" y1="115" x2="267" y2="110" stroke="#EF4444" stroke-width="2.5"/>
+<line x1="275" y1="115" x2="267" y2="120" stroke="#EF4444" stroke-width="2.5"/>
+<line x1="275" y1="105" x2="275" y2="125" stroke="#F97316" stroke-width="3"/>
             <!-- 텍스트 매핑 -->
             <text x="210" y="95" font-size="14" font-weight="bold" fill="#EF4444">L4</text>
         </svg>`,
@@ -747,46 +775,46 @@
         // 5형 (이미지 3번째 5형식 우하단 하향 배관 구조 완벽 싱크로)
         'V_U_5': `<svg viewBox="0 0 450 260" class="diagram-svg">
             <text x="15" y="25" font-size="13" font-weight="bold" fill="#0F766E">■ 5형 (3D 하향 단차형 수직 스트로크)</text>
-            <!-- 2번째 파일 하단 축 기호 감성 매핑 -->
-            <path d="M 120 45 C 120 30, 140 30, 140 45" fill="none" stroke="#475569" stroke-width="2"/>
-            <line x1="130" y1="45" x2="130" y2="70" stroke="#475569" stroke-width="2"/>
-            <circle cx="130" cy="70" r="6" fill="none" stroke="#475569" stroke-width="2"/>
-            <line x1="120" y1="77" x2="140" y2="77" stroke="#475569" stroke-width="3"/>
-            <!-- 배관 본체 스트로크 -->
-            <path d="M 90 190 L 150 190 L 150 100 L 290 100" fill="none" stroke="royalblue" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
-            <!-- 그림판 5번 형태의 안쪽 역추적 화살표 스트로크 라인 -->
-            <path d="M 270 100 L 200 100 L 200 170 L 110 170" fill="none" stroke="#EF4444" stroke-width="2.5"/>
-            <!-- 양방향 지시 화살표 및 오렌지 단면 차단선 매핑 -->
-            <line x1="270" y1="100" x2="262" y2="95" stroke="#EF4444" stroke-width="2.5"/>
-            <line x1="270" y1="100" x2="262" y2="105" stroke="#EF4444" stroke-width="2.5"/>
-            <line x1="270" y1="90" x2="270" y2="110" stroke="#F97316" stroke-width="3"/>
-            
-            <line x1="110" y1="170" x2="110" y2="195" stroke="#EF4444" stroke-width="2.5"/>
-            <line x1="110" y1="195" x2="105" y2="187" stroke="#EF4444" stroke-width="2.5"/>
-            <line x1="110" y1="195" x2="115" y2="187" stroke="#EF4444" stroke-width="2.5"/>
-            <line x1="100" y1="195" x2="120" y2="195" stroke="#F97316" stroke-width="3"/>
+            <!-- 배관 본체 (하단 수직 - 중간 수평 - 상단 대각선) -->
+<path d="M 120 250 L 120 150 L 220 150 L 290 80" fill="none" stroke="royalblue" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+
+<!-- 빨간색 화살표 경로 -->
+<path d="M 100 230 L 100 130 L 200 130 L 270 60" fill="none" stroke="#EF4444" stroke-width="2.5"/>
+
+<!-- 하단 화살표 머리 및 차단선 -->
+<line x1="100" y1="230" x2="95" y2="220" stroke="#EF4444" stroke-width="2.5"/>
+<line x1="100" y1="230" x2="105" y2="220" stroke="#EF4444" stroke-width="2.5"/>
+<line x1="90" y1="230" x2="110" y2="230" stroke="#F97316" stroke-width="3"/>
+
+<!-- 상단 화살표 머리 및 차단선 -->
+<line x1="270" y1="60" x2="260" y2="60" stroke="#EF4444" stroke-width="2.5"/>
+<line x1="270" y1="60" x2="265" y2="70" stroke="#EF4444" stroke-width="2.5"/>
+<line x1="260" y1="50" x2="280" y2="70" stroke="#F97316" stroke-width="3"/>
             <!-- 텍스트 매핑 -->
-            <text x="235" y="85" font-size="14" font-weight="bold" fill="#EF4444">L4</text>
+            <text x="215" y="85" font-size="14" font-weight="bold" fill="#EF4444">L4</text>
         </svg>`,
 
         // 6형 (3D 입체 복합 다단 절곡형 - 이미지 2번째의 입체감과 3번째 스트로크 설계 사양 조합 구조)
         'V_U_6': `<svg viewBox="0 0 450 260" class="diagram-svg">
             <text x="15" y="25" font-size="13" font-weight="bold" fill="#0F766E">■ 6형 (3D 다단 복합 입체 구조)</text>
-            <!-- 상단 기준 고정점 기호 -->
-            <circle cx="160" cy="45" r="8" fill="none" stroke="#475569" stroke-width="2"/>
-            <line x1="160" y1="53" x2="160" y2="70" stroke="#475569" stroke-width="2"/>
-            <!-- 메인 파란색 배관 입체 선형 스트로크 -->
-            <path d="M 80 210 L 180 210 L 180 120 L 280 90 L 280 160 L 380 140" fill="none" stroke="royalblue" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
-            <!-- 빨간색 측정 연산 스트로크 가이드선 완전 매칭 -->
-            <path d="M 210 110 L 280 90 L 280 160 L 350 145" fill="none" stroke="#EF4444" stroke-width="2.5"/>
-            <!-- 화살표 및 종단 바 처리 -->
-            <line x1="210" y1="110" x2="218" y2="115" stroke="#EF4444" stroke-width="2.5"/>
-            <line x1="210" y1="110" x2="214" y2="103" stroke="#EF4444" stroke-width="2.5"/>
-            <line x1="205" y1="100" x2="215" y2="120" stroke="#F97316" stroke-width="2.5"/>
-            
-            <line x1="350" y1="145" x2="342" y2="140" stroke="#EF4444" stroke-width="2.5"/>
-            <line x1="350" y1="145" x2="346" y2="152" stroke="#EF4444" stroke-width="2.5"/>
-            <line x1="350" y1="135" x2="350" y2="155" stroke="#F97316" stroke-width="2.5"/>
+            <!-- 메인 파란색 배관 (Z자형) -->
+<!-- 메인 파란색 배관 (Z자형 본체) -->
+<path d="M 100 200 L 200 200 L 200 100 L 300 100" fill="none" stroke="royalblue" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+
+<!-- 빨간색 화살표 경로: 수직선 길이를 늘리고(y=220까지) 전체를 아래로 이동 -->
+<path d="M 120 220 L 220 220 L 220 120 L 280 120" fill="none" stroke="#EF4444" stroke-width="2.5" stroke-linejoin="round"/>
+
+<!-- 왼쪽 화살표 머리 (왼쪽 방향) -->
+<line x1="120" y1="220" x2="130" y2="212" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="120" y1="220" x2="130" y2="228" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round"/>
+
+<!-- 오른쪽 화살표 머리 (오른쪽 방향) -->
+<line x1="280" y1="120" x2="270" y2="112" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round"/>
+<line x1="280" y1="120" x2="270" y2="128" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round"/>
+
+<!-- 오렌지색 차단선 (좌측 하단 및 우측 상단 끝점, 위치 연동) -->
+<line x1="120" y1="200" x2="120" y2="240" stroke="#F97316" stroke-width="3"/>
+<line x1="280" y1="100" x2="280" y2="140" stroke="#F97316" stroke-width="3"/>
             <!-- 텍스트 매핑 -->
             <text x="260" y="75" font-size="14" font-weight="bold" fill="#EF4444">L4</text>
         </svg>`
